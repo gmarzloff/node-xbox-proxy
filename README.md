@@ -1,3 +1,23 @@
 #node-xbox-proxy
 
 This is a node app to quickly allow access to xbox-api from a server by URL without requiring passing an API key from the client side. Good for test development for students unfamiliar with server side development.
+
+## Installation
+
+1. Clone this repository
+
+2. Type ```npm install``` to load express & node-xbox dependencies
+
+3. Define your api key in ```app.js```: ```const XBOX_API_KEY = 'ENTER YOUR API KEY HERE';``` 
+If you need to create one, get one from [Xbox API](https://xboxapi.com/).
+
+4. Start the express server  ```node app.js```
+
+
+## Making API calls
+Currently all "profile" category methods are supported. See [node-xbox](https://www.npmjs.com/package/node-xbox) documentation for details. 
+
+Examples: 
+- http://localhost:8000/profile/xuid/[gamertag here] will return xuid for gamertag
+- http://localhost:8000/profile/[xuid here] will return full profile details
+- http://localhost:8000/profile/friends/[xuid here] will return full profile details
