@@ -1,5 +1,5 @@
 {
-  "name": "xboxgamerfeed",
+  "name": "node-xbox-proxy",
   "version": "1.0.0",
   "description": "Proxy for XboxAPI data",
   "main": "index.js",
@@ -11,5 +11,9 @@
   "dependencies": {
     "express": "^4.14.0",
     "node-xbox": "^0.1.0"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "git@github.com:gmarzloff/node-xbox-proxy.git"
   }
 }
