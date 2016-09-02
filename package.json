@@ -1,0 +1,15 @@
+{
+  "name": "xboxgamerfeed",
+  "version": "1.0.0",
+  "description": "Proxy for XboxAPI data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "George Marzloff",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "node-xbox": "^0.1.0"
+  }
+}
