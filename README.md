@@ -13,9 +13,10 @@ If you need to create one, get one from [Xbox API](https://xboxapi.com/).
 
 4. Start the express server  ```node app.js```
 
-
 ## Making API calls
 Currently all "profile" category methods are supported. See [node-xbox](https://www.npmjs.com/package/node-xbox) documentation for details. 
+
+Note: these calls return data in JSONP format.
 
 Examples: 
 - http://localhost:8000/profile/xuid/[gamertag here] will return xuid for gamertag

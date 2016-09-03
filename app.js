@@ -8,7 +8,7 @@ const express = require('express');
 const app = express();
 const http = require('http');
 
-const XBOX_API_KEY = 'ENTER YOUR API KEY HERE';
+// const XBOX_API_KEY = 'ENTER YOUR API KEY HERE';
 const xbox = require('node-xbox')(XBOX_API_KEY);
 
 app.get('/', function(req,res){
@@ -17,101 +17,101 @@ app.get('/', function(req,res){
 
 app.get('/profile/xuid/:gamertag', function(req,res){
 	xbox.profile.xuid(req.params.gamertag, function(err,data){
-		res.send(data);
+		res.jsonp({res:data});
 	});
 });
 
 app.get('/profile/gamertag/:myXUID', function(req,res){
 	xbox.profile.gamertag(req.params.myXUID, function(err,data){
-		res.send(data);
+		res.jsonp({res:data});
 	});
 });
 
 app.get('/profile/profile/:myXUID', function(req,res){
 	xbox.profile.profile(req.params.myXUID, function(err,data){
-		res.send(data);
+		res.jsonp({res:data});
 	});
 });
 
 app.get('/profile/gamercard/:myXUID', function(req,res){
 	xbox.profile.gamercard(req.params.myXUID, function(err,data){
-		res.send(data);
+		res.jsonp({res:data});
 	});
 });
 
 app.get('/profile/presence/:myXUID', function(req,res){
 	xbox.profile.presence(req.params.myXUID, function(err,data){
-		res.send(data);
+		res.jsonp({res:data});
 	});
 });
 
 app.get('/profile/activity/:myXUID', function(req,res){
 	xbox.profile.activity(req.params.myXUID, function(err,data){
-		res.send(data);
+		res.jsonp({res:data});
 	});
 });
 
 app.get('/profile/activityRecent/:myXUID', function(req,res){
 	xbox.profile.activityRecent(req.params.myXUID, function(err,data){
-		res.send(data);
+		res.jsonp({res:data});
 	});
 });
 
 app.get('/profile/friends/:myXUID', function(req,res){
 	xbox.profile.friends(req.params.myXUID, function(err,data){
-		res.send(data);
+		res.jsonp({res:data});
 	});
 });
 app.get('/profile/followers/:myXUID', function(req,res){
 	xbox.profile.followers(req.params.myXUID, function(err,data){
-		res.send(data);
+		res.jsonp({res:data});
 	});
 });
 app.get('/profile/following/:myXUID', function(req,res){
 	xbox.profile.following(req.params.myXUID, function(err,data){
-		res.send(data);
+		res.jsonp({res:data});
 	});
 });
 
 app.get('/profile/gameClips/:myXUID', function(req,res){
 	xbox.profile.gameClips(req.params.myXUID, function(err,data){
-		res.send(data);
+		res.jsonp({res:data});
 	});
 });
 
 app.get('/profile/gameClipsSaved/:myXUID', function(req,res){
 	xbox.profile.gameClipsSaved(req.params.myXUID, function(err,data){
-		res.send(data);
+		res.jsonp({res:data});
 	});
 });
 
 app.get('/profile/gameStats/:myXUID/:titleID', function(req,res){
 	xbox.profile.gameStats(req.params.myXUID, req.params.titleID, function(err,data){
-		res.send(data);
+		res.jsonp({res:data});
 	});
 });
 
 app.get('/profile/xbox360Games/:myXUID', function(req,res){
 	xbox.profile.xbox360Games(req.params.myXUID, function(err,data){
-		res.send(data);
+		res.jsonp({res:data});
 	});
 });
 
 app.get('/profile/xboxOneGames/:myXUID', function(req,res){
 	xbox.profile.xboxOneGames(req.params.myXUID, function(err,data){
-		res.send(data);
+		res.jsonp({res:data});
 	});
 });
 
 app.get('/profile/achievements/:myXUID/:titleID', function(req,res){
 	xbox.profile.achievements(req.params.myXUID, req.params.titleID, function(err,data){
-		res.send(data);
+		res.jsonp({res:data});
 	});
 });
 
 app.get('game/:product_id', function(req,res){
 	xbox.game.game(req.params.product_id, function(err, data){
-		res.send(data);
+		res.jsonp({res:data});
 	});
 });
 
