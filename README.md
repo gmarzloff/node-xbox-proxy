@@ -15,6 +15,8 @@ This is a node app to quickly allow access to xbox-api from a server by URL with
 5. Edit ```node_modules/apiSettings.js``` to define your api key ```XBOX_API_KEY = 'ENTER YOUR API KEY HERE';``` 
 If you need to create one, get one from [Xbox API](https://xboxapi.com/).
 
+You can also enter the Amazon AWS details here to access the Product API.
+
 6. Start the express server  ```node app.js```
 
 ## Making API calls
@@ -26,3 +28,7 @@ Examples:
 - http://localhost:8000/profile/xuid/[gamertag here] will return xuid for gamertag
 - http://localhost:8000/profile/[xuid here] will return full profile details
 - http://localhost:8000/profile/friends/[xuid here] will return full profile details
+
+Amazom Examples:
+- http://localhost:8000/amz/[product title] (returns all results)
+- http://localhost:8000/amz/[product title]/N (limit results to top N items)

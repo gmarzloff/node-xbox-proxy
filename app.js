@@ -12,6 +12,34 @@ const config = require('apiSettings');
 const xbox = require('node-xbox')(config.XBOX_API_KEY);
 
 
+var amzClient = amazon.createClient({
+        awsId: config.AWS_ID,
+        awsSecret: config.AWS_SECRET,
+        awsTag: config.AWS_TAG
+});
+
+app.get('/amz/:gameTitleQuery/:limit?', function(req,res){
+        // limit is optional
+
+        amzClient.itemSearch({
+                searchIndex: 'VideoGames',
+                responseGroup: 'ItemAttributes,Images,Offers',
+                sort: 'salesrank',
+                title: req.params.gameTitleQuery
+        }, function(err, results, response){
+                if (err){
+                        console.log(err);
+                }else {
+                        if(req.params.limit > 0){
+                                var limitedResults = results.slice(0,req.params.limit);
+                                res.jsonp({res:limitedResults});
+                        }else{
+                                res.jsonp({res:results});
+                        }
+                }
+        });
+});
+
 app.get('/', function(req,res){
 	res.send('Hello, Node Express User.');
 });
