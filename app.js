@@ -7,9 +7,10 @@
 const express = require('express');
 const app = express();
 const http = require('http');
+const config = require('apiSettings');
 
-// const XBOX_API_KEY = 'ENTER YOUR API KEY HERE';
-const xbox = require('node-xbox')(XBOX_API_KEY);
+const xbox = require('node-xbox')(config.XBOX_API_KEY);
+
 
 app.get('/', function(req,res){
 	res.send('Hello, Node Express User.');

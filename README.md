@@ -8,10 +8,14 @@ This is a node app to quickly allow access to xbox-api from a server by URL with
 
 2. Type ```npm install``` to load express & node-xbox dependencies
 
-3. Define your api key in ```app.js```: ```const XBOX_API_KEY = 'ENTER YOUR API KEY HERE';``` 
+3. ```cd node_modules```
+
+4. ```cp apiSettings.js.editme apiSettings.js```
+
+5. Edit ```node_modules/apiSettings.js``` to define your api key ```XBOX_API_KEY = 'ENTER YOUR API KEY HERE';``` 
 If you need to create one, get one from [Xbox API](https://xboxapi.com/).
 
-4. Start the express server  ```node app.js```
+6. Start the express server  ```node app.js```
 
 ## Making API calls
 Currently all "profile" category methods are supported. See [node-xbox](https://www.npmjs.com/package/node-xbox) documentation for details. 
