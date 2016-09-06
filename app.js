@@ -6,16 +6,22 @@
 
 const express = require('express');
 const app = express();
-const http = require('http');
+const fs = require('fs');
+const https = require('https');
 const config = require('apiSettings');
 
 const xbox = require('node-xbox')(config.XBOX_API_KEY);
-
+const amazon = require('amazon-product-api');
 
 var amzClient = amazon.createClient({
         awsId: config.AWS_ID,
         awsSecret: config.AWS_SECRET,
         awsTag: config.AWS_TAG
+});
+
+
+app.get('/', function(req,res){
+	res.send('Hello, Node Express User.');
 });
 
 app.get('/amz/:gameTitleQuery/:limit?', function(req,res){
@@ -38,10 +44,6 @@ app.get('/amz/:gameTitleQuery/:limit?', function(req,res){
                         }
                 }
         });
-});
-
-app.get('/', function(req,res){
-	res.send('Hello, Node Express User.');
 });
 
 app.get('/profile/xuid/:gamertag', function(req,res){
@@ -144,6 +146,10 @@ app.get('game/:product_id', function(req,res){
 	});
 });
 
-app.listen(8000, function(){
-	console.log('<< XboxGamerFeed app listening on port 8000... >>');
+var server = https.createServer({
+        key: fs.readFileSync(config.SSL_DECRYPTED_KEY_PATH),
+        cert: fs.readFileSync(config.SSL_CERTIFICATE_PATH)
+}, app).listen(8000, function(err){
+        if(err){console.log("Error. Unable to start https server."); }
+        console.log("HTTPS Server XboxGamerFeed App listening at https://%s:%s", server.address().address, server.address().port);
 });
