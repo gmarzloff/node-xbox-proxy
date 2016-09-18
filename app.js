@@ -9,7 +9,6 @@ const app = express();
 const fs = require('fs');
 const https = require('https');
 const config = require('apiSettings');
-
 const xbox = require('node-xbox')(config.XBOX_API_KEY);
 const amazon = require('amazon-product-api');
 
@@ -36,11 +35,15 @@ app.get('/amz/:gameTitleQuery/:limit?', function(req,res){
                 responseGroup: 'ItemAttributes,Images,Offers',
                 sort: 'salesrank',
                 title: req.params.gameTitleQuery
+
         }, function(err, results, response){
                 if (err){
-                        console.log(err);
+			var errorMessageText = err[0].Error[0].Message[0];
+			//console.log("Error from Amazon API: " + errorMessageText);
+			res.jsonp({error:errorMessageText});
                 }else {
-                        if(req.params.limit > 0){
+                       //console.log("success. results: " +  results.length);
+			 if(req.params.limit > 0){
                                 var limitedResults = results.slice(0,req.params.limit);
                                 res.jsonp({res:limitedResults});
                         }else{
