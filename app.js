@@ -25,10 +25,14 @@ app.get('/', function(req,res){
 });
 
 app.get('/amz/:gameTitleQuery/:limit?', function(req,res){
-        // limit is optional
+        // Here we accept an optional parameter 'limit', which we will use to limit the results returned to the user.
+
+	var priceRange = { min: 1000, max: 7000 }; // weak way to filter for games. Don't include decimal place (last 2 digits assumed to be cents in USD)
 
         amzClient.itemSearch({
                 searchIndex: 'VideoGames',
+		minimumPrice : priceRange.min,
+		maximumPrice : priceRange.max,
                 responseGroup: 'ItemAttributes,Images,Offers',
                 sort: 'salesrank',
                 title: req.params.gameTitleQuery
